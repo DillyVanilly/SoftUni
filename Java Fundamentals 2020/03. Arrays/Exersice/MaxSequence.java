@@ -6,23 +6,23 @@ public class MaxSequence {
         int[] arr = Arrays.stream(new Scanner(System.in).nextLine().split(" "))
                 .mapToInt(Integer::parseInt).toArray();
 
-        int counter = 1;
-        int maxCount = 1;
-        int maxNum = 0;
+        int counter = 0;
+        int maxCount = 0;
+        int num = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            if (i < arr.length - 1) {
-                if (arr[i] == arr[i + 1]) {
-                    counter++;
-                    if (maxCount < counter) {
-                        maxCount = counter;
-                        maxNum = arr[i];
-                    }
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] == arr[i + 1]) {
+                counter++;
+                if (maxCount < counter) {
+                    maxCount = counter;
+                    num = arr[i];
                 }
+            } else {
+                counter = 0;
             }
         }
-        for (int i = 0; i < maxCount; i++) {
-            System.out.print(maxNum + " ");
+        for (int i = 0; i <= maxCount; i++) {
+            System.out.print(num + " ");
         }
     }
 }
