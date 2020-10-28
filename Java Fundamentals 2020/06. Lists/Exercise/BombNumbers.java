@@ -7,7 +7,10 @@ public class BombNumbers {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        List<Integer> numbers = readListInt(scanner);
+        List<Integer> numbers = Arrays.stream(scanner.nextLine()
+                .split("\\s+"))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
 
         int bombNumber = scanner.nextInt();
         int power = scanner.nextInt();
@@ -15,12 +18,16 @@ public class BombNumbers {
         int i = 0;
         while (i < numbers.size()) {
             if (numbers.get(i) == bombNumber) {
-                i -= power;
-                if (0 <= i && i < numbers.size()) {
-                    for (int j = 0; j < power * 2 + 1; j++) {
-                        numbers.remove(i);
+                int removeCount = 2 * power + 1;
+                int start = i - power;
+                for (int j = 0; j < removeCount; j++) {
+                    if (start < numbers.size()) {
+                        numbers.remove(start);
+                    } else {
+                        break;
                     }
                 }
+                i--;
             }
             i++;
         }
@@ -30,12 +37,5 @@ public class BombNumbers {
             sum += number;
         }
         System.out.println(sum);
-    }
-
-    private static List<Integer> readListInt(Scanner scanner) {
-        return Arrays.stream(scanner.nextLine()
-                .split("\\s+"))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
     }
 }
