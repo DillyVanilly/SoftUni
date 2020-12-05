@@ -6,7 +6,7 @@ public class SoftUniBarIncome {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String regex = "%(?<name>[A-Z][a-z]+)%[^|$%.]*<(?<product>[A-Za-z]+)>[^|$%.]*\\|(?<count>\\d+)\\|[^|$%.]*?(?<price>\\d+.?\\d*)\\$";
+        String regex = "%(?<name>[A-Z][a-z]+)%[^|$%.]*<(?<product>w+)>[^|$%.]*\\|(?<count>\\d+)\\|[^|$%.]*?(?<price>\\d+.?\\d*)\\$";
 
         Pattern pattern = Pattern.compile(regex);
 
